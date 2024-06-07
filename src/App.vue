@@ -2,8 +2,10 @@
   <div>
     <h1>Curso de Pinia</h1>
     <h4>User store</h4>
+    {{ userStore.firstName }}
+    {{ userStore.lastName }}
+    {{ userStore.age }}
     <pre>
-    {{ userStore.user }}
     </pre>
     <br></br>
     <h4>Cart store</h4>
@@ -18,13 +20,21 @@ import { useCartStore } from './store/cart.js';
 const userStore = useUserStore();
 const cartStore = useCartStore();
 
-cartStore.products[0].name = 'Macbook Pro'
-cartStore.products.push({
-  name: 'Imac',
-  amount: 1000
+userStore.$patch({
+  firstName: 'Ericson',
+  lastName: 'J Santos',
+  age: 30
 })
 
-// userStore.user.first_name = 'ERICSON'
+cartStore.$patch((state) => {
+  state.products.push({
+    name: 'Imac',
+    amount: 100
+  })
+})
+
+// userStore.firstName = 'Ericson'
+// userStore.lastName = 'J Santos'
 </script>
 
 <!-- <script>
