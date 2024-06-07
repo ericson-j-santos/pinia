@@ -5,7 +5,7 @@ export const useUserStore = defineStore('user', () => {
     //State
     const user = ref({
         first_name: 'Jon',
-        second_name: 'Snow',
+        last_name: 'Snow'
     })
 
     //Actions
@@ -16,9 +16,8 @@ export const useUserStore = defineStore('user', () => {
     //Getters
     const fullName = computed(() => `${user.value.first_name} ${user.value.last_name}`)
 
-    return
-    {
+    return {
         user,
-            changeName
+        changeName
     }
 })
