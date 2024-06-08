@@ -21,6 +21,16 @@ import { useCartStore } from './store/cart.js';
 const userStore = useUserStore();
 const cartStore = useCartStore();
 
+// Aqui é um exemplo de como você pode usar o watch para observar mudanças em TODA a STORE
+watch(userStore, (vl) => {
+  console.log(vl)
+})
+
+// Aqui é um exemplo de como você pode usar o watch para observar mudanças em UMA PROPRIEDADE ESPECIFICA
+watch(() => userStore.firstName, (vl) => {
+  console.log(vl)
+})
+
 userStore.$patch({
   firstName: 'Ericson',
   lastName: 'J Santos',
