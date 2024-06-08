@@ -6,16 +6,7 @@ export const useCartStore = defineStore('cart', {
     state: () => ({
         //state que é o ESTADO RECEBE  uma FUNCAO que RETORNA um OBJETO e é onde vai ser armazenado os dados do carrinho;
         //products é um array que vai armazenar os produtos do carrinho;
-        products: [
-            {
-                name: 'Iphone',
-                amount: 10,
-            },
-            {
-                name: 'Macbook',
-                amount: 100,
-            },
-        ],
+        products: [],
     }),
 
     //actions é como se fosse uma sessao para guardar methods e funcao, addproduto, remover produto, funcoes para gerenciar store
