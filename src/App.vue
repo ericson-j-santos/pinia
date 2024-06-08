@@ -14,7 +14,10 @@
   </div>
 </template>
 
+
 <script setup>
+
+import { watch } from 'vue';
 import { useUserStore } from './store/user.js';
 import { useCartStore } from './store/cart.js';
 
@@ -35,6 +38,10 @@ userStore.$patch({
   firstName: 'Ericson',
   lastName: 'J Santos',
   age: 30
+})
+
+cartStore.$subscribe((mutation, state) => {
+  console.log(mutation, state)
 })
 
 cartStore.$patch((state) => {

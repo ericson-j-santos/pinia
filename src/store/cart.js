@@ -4,6 +4,7 @@ import { defineStore } from 'pinia'
 // aqui é usado a função defineStore para criar um novo store que foi passado como primeiro parametro a id 'cart' e segundo paramentro o objeto de opções chamado options;
 export const useCartStore = defineStore('cart', {
     state: () => ({
+        address: {},
         //state que é o ESTADO RECEBE  uma FUNCAO que RETORNA um OBJETO e é onde vai ser armazenado os dados do carrinho;
         //products é um array que vai armazenar os produtos do carrinho;
         products: [],
