@@ -7,9 +7,10 @@
     {{ userStore.age }}
     <pre>
     </pre>
-    <br></br>
+    <br><br>
     <h4>Cart store</h4>
     <pre>{{ cartStore.products }}</pre>
+    <button @click="cartStore.$reset">Resetar store cart</button>
   </div>
 </template>
 
