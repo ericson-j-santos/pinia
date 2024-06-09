@@ -2,7 +2,7 @@
   <div>
     <h1>Curso de Pinia</h1>
 
-    <h3>Carrinho</h3>
+    <h3>Carrinho {{ cartStore.total }}</h3>
 
     <div class="cart">
       <div v-for="product in cartStore.products" :key="product.name" class="cart-item">
