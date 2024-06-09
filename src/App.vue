@@ -1,12 +1,42 @@
 <template>
   <div>
     <h1>Curso de Pinia</h1>
+    <div>
+      TOTAL: {{ total }}
+    </div>
+    {{ getProductByName('MacBook') }}
+  </div>
+</template>
+
+<script>
+import { useCartStore } from './store/cart.js';
+import { mapState } from 'pinia'
+
+export default {
+  computed: {
+    ...mapState(useCartStore, ['total', 'getProductByName'])
+  },
+}
+
+</script>
+
+
+
+
+
+
+
+
+<!-- 
+<template>
+  <div>
+    <h1>Curso de Pinia</h1>
     {{ userStore.fullName }} <br>
     <input v-model="userStore.user.first_name" type="text">
     <br><br>
-    <!-- <button @click="changeIphoneValue(1000)">
-        Alterar valor changeIphoneValue
-      </button> -->
+    //<button @click="changeIphoneValue(1000)">
+        //Alterar valor changeIphoneValue
+      //</button>
     <div>
       TOTAL: {{ cartStore.total }}
       <br><br>
@@ -18,8 +48,6 @@
     </div>
   </div>
 </template>
-
-
 
 <script setup>
 //pulodogato
@@ -36,8 +64,8 @@ const cartStore = useCartStore();
 function changeIphoneValue(vl) {
   cartStore.products[0].amount = vl;
 }
-
-</script>
+</script> 
+-->
 
 <!-- 
 <script setup>
@@ -80,20 +108,11 @@ const cartStore = useCartStore();
 //   })
 // })
 // userStore.firstName = 'Ericson'
-// userStore.lastName = 'J Santos'</script>-->
+// userStore.lastName = 'J Santos'</script>
+-->
 
-
-
-
-
-
-
-
-
-
-
-
-<!-- <div>
+<!-- 
+<div>
     <h1>Curso de Pinia</h1>
     <h4>User store</h4>
     {{ firstName }}
@@ -111,16 +130,11 @@ const cartStore = useCartStore();
     <h4>Cart store</h4>
     <pre>{{ cartStore.products }}</pre>
     <button @click="cartStore.$reset">Resetar store cart</button>
-  </div> -->
+  </div> 
+  -->
 
-
-
-
-
-
-
-
-<!-- <script>
+<!-- 
+  <script>
 export default {
 setup() {
  const userStore = useUserStore();
@@ -132,4 +146,5 @@ setup() {
  };
  }
  }
- </script> -->
+ </script> 
+ -->
