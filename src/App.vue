@@ -1,16 +1,20 @@
 <template>
   <div>
     <h1>Curso de Pinia</h1>
+
     <h3>Carrinho</h3>
+
     <div class="cart">
       <div v-for="product in cartStore.products" :key="product.name" class="cart-item">
         {{ product.name }} <br>
         R$ {{ product.amount }} <br>
-        <button>Remover</button>
+        <button @click="removeFromCart(product)">Remover</button>
       </div>
     </div>
     <hr>
+
     <h3>Lista de produtos</h3>
+
     <div class="cart">
       <div v-for="product in products" :key="product.name" class="cart-item">
         {{ product.name }} <br>
@@ -51,6 +55,9 @@ const products = ref([
 
 function addToCart(product) {
   cartStore.addProduct(product)
+}
+function removeFromCart(product) {
+  cartStore.removeProduct(product)
 }
 </script>
 
