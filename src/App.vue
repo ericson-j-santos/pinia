@@ -59,6 +59,14 @@ function addToCart(product) {
 function removeFromCart(product) {
   cartStore.removeProduct(product)
 }
+
+cartStore.$onAction(({ name, after }) => {
+  after(() => {
+    if (name === 'addProduct') {
+      console.log('Action done', name)
+    }
+  })
+})
 </script>
 
 
