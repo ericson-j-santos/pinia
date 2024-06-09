@@ -9,6 +9,9 @@
       </button> -->
     <div>
       TOTAL: {{ cartStore.total }}
+      <br><br>
+      {{ cartStore.getProductByName('MacBook') }}
+      <br><br>
       <button @click="changeIphoneValue(1000)">
         Alterar valor Iphone
       </button>
