@@ -28,6 +28,15 @@ export const useCartStore = defineStore('cart', {
                 this.products.push(product)
                 //console.log(product)
             }
+
+            return new Promise((resolve) => {
+                return setTimeout(() => {
+                    resolve('Ok')
+                }, 2000)
+            })
+        },
+        afterAddToCart() {
+
         },
         removeProduct(product) {
             //Primeira forma de remover
