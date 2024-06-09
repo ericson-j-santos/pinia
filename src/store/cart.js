@@ -26,10 +26,17 @@ export const useCartStore = defineStore('cart', {
             //AJAX
             if (!this.products.some(o => o.id === product.id)) {
                 this.products.push(product)
-                console.log(product)
+                //console.log(product)
             }
         },
-        removeProduct() { }
+        removeProduct(product) {
+            //Primeira forma de remover
+            // const idx = this.products.findIndex(o => o.id === product.id)
+            // this.products.splice(idx, 1)
+
+            //Segunda forma de remover
+            this.products = this.products.filter(o => o.id !== product.id)
+        }
     },
     // getters vai ser reativo, como se fosse uma computed, se tivermos um array do products e temos um getter de total do product para calcular o total de produtos, o getter vai ser reativo e vai ser atualizado sempre que o array de products for atualizado;
     getters: {
