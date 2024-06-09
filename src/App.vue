@@ -1,13 +1,64 @@
 <template>
   <div>
     <h1>Curso de Pinia</h1>
-    <div>
-      TOTAL: {{ total }}
+    <h3>Carrinho</h3>
+    <div class="cart">
+      <div v-for="product in cartStore.products" :key="product.name" class="cart-item">
+        {{ product.name }} <br>
+        R$ {{ product.amount }} <br>
+        <button>Remover</button>
+      </div>
     </div>
-    {{ getProductByName('MacBook') }}
+    <hr>
+    <h3>Lista de produtos</h3>
+    <div class="cart">
+      <div v-for="product in products" :key="product.name" class="cart-item">
+        {{ product.name }} <br>
+        R$ {{ product.amount }} <br>
+        <button @click="addToCart(product)">Add</button>
+      </div>
+    </div>
   </div>
 </template>
 
+<script setup>
+import { useCartStore } from './store/cart.js';
+import { ref } from 'vue'
+
+const cartStore = useCartStore();
+const products = ref([
+  {
+    id: 1,
+    name: 'Iphone',
+    amount: 1000
+  },
+  {
+    id: 2,
+    name: 'MacBook',
+    amount: 2000
+  },
+  {
+    id: 3,
+    name: 'Ipad',
+    amount: 500
+  },
+  {
+    id: 4,
+    name: 'Apple Watch',
+    amount: 300
+  }
+])
+
+function addToCart(product) {
+  cartStore.addProduct(product)
+}
+</script>
+
+
+
+
+
+<!-- 
 <script>
 import { useCartStore } from './store/cart.js';
 import { mapState } from 'pinia'
@@ -17,11 +68,8 @@ export default {
     ...mapState(useCartStore, ['total', 'getProductByName'])
   },
 }
-
-</script>
-
-
-
+</script> 
+-->
 
 
 
