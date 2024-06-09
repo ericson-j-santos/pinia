@@ -1,6 +1,97 @@
 <template>
   <div>
     <h1>Curso de Pinia</h1>
+    {{ userStore.fullName }} <br>
+    <input v-model="userStore.user.first_name" type="text">
+    <br><br>
+    <!-- <button @click="changeIphoneValue(1000)">
+        Alterar valor changeIphoneValue
+      </button> -->
+    <div>
+      TOTAL: {{ cartStore.total }}
+      <button @click="changeIphoneValue(1000)">
+        Alterar valor Iphone
+      </button>
+    </div>
+  </div>
+</template>
+
+
+
+<script setup>
+//pulodogato
+import { storeToRefs } from 'pinia';
+
+import { watch } from 'vue';
+import { useUserStore } from './store/user.js';
+import { useCartStore } from './store/cart.js';
+
+const userStore = useUserStore();
+// const { firstName, lastName, age } = storeToRefs(userStore);
+const cartStore = useCartStore();
+
+function changeIphoneValue(vl) {
+  cartStore.products[0].amount = vl;
+}
+
+</script>
+
+<!-- 
+<script setup>
+//pulodogato
+import { storeToRefs } from 'pinia';
+
+import { watch } from 'vue';
+import { useUserStore } from './store/user.js';
+import { useCartStore } from './store/cart.js';
+
+const userStore = useUserStore();
+// const { firstName, lastName, age } = storeToRefs(userStore);
+const cartStore = useCartStore(); 
+-->
+<!--
+// Aqui é um exemplo de como você pode usar o watch para observar mudanças em TODA a STORE
+// watch(userStore, (vl) => {
+//   console.log(vl)
+// })
+
+// // Aqui é um exemplo de como você pode usar o watch para observar mudanças em UMA PROPRIEDADE ESPECIFICA
+// watch(() => userStore.firstName, (vl) => {
+//   console.log(vl)
+// })
+
+// userStore.$patch({
+//   firstName: 'Ericson',
+//   lastName: 'J Santos',
+//   age: 30
+// })
+
+// cartStore.$subscribe((mutation, state) => {
+//   console.log(mutation, state)
+// })
+
+// cartStore.$patch((state) => {
+//   state.products.push({
+//     name: 'Imac',
+//     amount: 100
+//   })
+// })
+// userStore.firstName = 'Ericson'
+// userStore.lastName = 'J Santos'</script>-->
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div>
+    <h1>Curso de Pinia</h1>
     <h4>User store</h4>
     {{ firstName }}
     <div>
@@ -17,52 +108,14 @@
     <h4>Cart store</h4>
     <pre>{{ cartStore.products }}</pre>
     <button @click="cartStore.$reset">Resetar store cart</button>
-  </div>
-</template>
+  </div> -->
 
 
-<script setup>
-//pulodogato
-import { storeToRefs } from 'pinia';
 
-import { watch } from 'vue';
-import { useUserStore } from './store/user.js';
-import { useCartStore } from './store/cart.js';
 
-const userStore = useUserStore();
-const { firstName, lastName, age } = storeToRefs(userStore);
-const cartStore = useCartStore();
 
-// Aqui é um exemplo de como você pode usar o watch para observar mudanças em TODA a STORE
-watch(userStore, (vl) => {
-  console.log(vl)
-})
 
-// Aqui é um exemplo de como você pode usar o watch para observar mudanças em UMA PROPRIEDADE ESPECIFICA
-watch(() => userStore.firstName, (vl) => {
-  console.log(vl)
-})
 
-userStore.$patch({
-  firstName: 'Ericson',
-  lastName: 'J Santos',
-  age: 30
-})
-
-cartStore.$subscribe((mutation, state) => {
-  console.log(mutation, state)
-})
-
-cartStore.$patch((state) => {
-  state.products.push({
-    name: 'Imac',
-    amount: 100
-  })
-})
-
-// userStore.firstName = 'Ericson'
-// userStore.lastName = 'J Santos'
-</script>
 
 <!-- <script>
 export default {
