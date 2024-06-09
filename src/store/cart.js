@@ -29,5 +29,9 @@ export const useCartStore = defineStore('cart', {
         total: (state) => state.products.reduce((total, obj) => total += obj.amount, 0),
 
         // várias funções que vão ser reativas e vão ser atualizadas sempre que o array de products for atualizado;
+
+        getProductByName: (state) => {
+            return (name) => state.products.find(o => o.name === name)
+        }
     },
 })
