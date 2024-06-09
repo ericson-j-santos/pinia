@@ -2,6 +2,12 @@
   <div>
     <h1>Curso de Pinia</h1>
     <h4>User store</h4>
+    {{ firstName }}
+    <div>
+      <input type="text" v-model="firstName" placeholder="Digite para mudar firstName"><br>
+      <input type="text" v-model="lastName" placeholder="Digite para mudar lastName"><br>
+      <input type="text" v-model="age" placeholder="Digite para mudar age"><br>
+    </div>
     {{ userStore.firstName }}
     {{ userStore.lastName }}
     {{ userStore.age }}
@@ -16,12 +22,15 @@
 
 
 <script setup>
+//pulodogato
+import { storeToRefs } from 'pinia';
 
 import { watch } from 'vue';
 import { useUserStore } from './store/user.js';
 import { useCartStore } from './store/cart.js';
 
 const userStore = useUserStore();
+const { firstName, lastName, age } = storeToRefs(userStore);
 const cartStore = useCartStore();
 
 // Aqui é um exemplo de como você pode usar o watch para observar mudanças em TODA a STORE
